@@ -1,12 +1,29 @@
 <html>
 <head>
 <title>
-CERTIFIED VERIFICATION
+CERTIFIED VERIFICATION ONLINE
 </title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#0a192f">
+
+<!-- iOS icons -->
+<link rel="apple-touch-icon" href=".\Yonkio\hero-img.png">
+<link rel="apple-touch-icon" sizes="152x152" href=".\Yonkio\hero-img.png">
+<link rel="apple-touch-icon" sizes="180x180" href=".\Yonkio\hero-img.png">
+<link rel="apple-touch-icon" sizes="167x167" href=".\Yonkio\hero-img.png">
+
+<!-- iOS splash screens -->
+<link rel="apple-touch-startup-image" href=".\Yonkio\hero-img.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
+<link rel="apple-touch-startup-image" href=".\Yonkio\hero-img.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
+<link rel="apple-touch-startup-image" href=".\Yonkio\hero-img.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+
 <link rel="stylesheet" href="yonkio.css">
 <link rel="stylesheet" href="patati.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <link rel="shortcut icon" type="x-icon" href="https://github.com/CERTIFIED-VERIFICATION/certifiedverification/blob/main/Yonkio/newppsite.jpg?raw=true">
 <meta property="og:locale" content="fr_FR"/>
@@ -38,30 +55,111 @@ emailjs.init("TBFksoPQjN-TlQL1W");
 })();
 </script>
 
+<style>
+    /* iOS-specific styles */
+    @supports (-webkit-touch-callout: none) {
+        .service-card {
+            -webkit-transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            -webkit-perspective: 1000;
+        }
+        
+        .glass-morphism {
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        /* Prevent text size adjustment on orientation change */
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        /* Fix for iOS button styling */
+        button {
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+        
+        /* Fix for iOS input styling */
+        input, select, textarea {
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+        
+        /* Safe area insets for iPhone X and newer */
+        @supports (padding: max(0px)) {
+            .header {
+                padding-top: max(0.5rem, env(safe-area-inset-top));
+                padding-left: max(0.5rem, env(safe-area-inset-left));
+                padding-right: max(0.5rem, env(safe-area-inset-right));
+            }
+            
+            .footer {
+                padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+            }
+        }
+    }
+
+    /* Improved touch targets for mobile */
+    @media (max-width: 768px) {
+        .nav-link, button, .service-card {
+            min-height: 44px; /* iOS minimum touch target size */
+            min-width: 44px;
+        }
+        
+        .service-card {
+            padding: 20px !important;
+        }
+        
+        /* Prevent pull-to-refresh on iOS */
+        body {
+            overscroll-behavior-y: none;
+        }
+        
+        /* Fix for iOS momentum scrolling */
+        .container {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Improve tap highlight on iOS */
+        a, button {
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        
+        /* Fix for iOS form elements */
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            font-size: 16px !important; /* Prevent zoom on focus */
+            padding: 12px !important;
+            margin-bottom: 15px !important;
+        }
+    }
+</style>
 
 </head>
 
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="header d-flex align-items-center fixed-top" style="background-color: rgb(93, 93, 160);" >
+  <header id="header" class="header d-flex align-items-center fixed-top" style="background: linear-gradient(135deg, #00b09b, #96c93d); box-shadow: 0 8px 32px rgba(0,0,0,0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); animation: slideInDown 1s ease-out;">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a  class="logo d-flex align-items-center" >
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src=".\Yonkio\hero-img.png" alt="">
-        <h1>Certified verification</h1>
+      <a class="logo d-flex align-items-center" style="animation: fadeIn 1.5s ease-out;">
+        <img src=".\Yonkio\hero-img.png" alt="" style="animation: float 3s ease-in-out infinite;">
+        <h1 style="background: linear-gradient(45deg, #fff, #e0e0e0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">Certified Verification Online</h1>
       </a>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar" style="animation: fadeIn 2s ease-out;">
         <ul>
-          <li><a href="" class="active">Accueil</a></li>
-          <li><a href="#about">A propos de nous</a></li>
-          <li><a href="#cartes">Cartes</a></li>
-          <li><a href="#formulaire">Verifier mon coupon</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="" class="active nav-link">Accueil</a></li>
+          <li><a href="#about" class="nav-link">A propos de nous</a></li>
+          <li><a href="#cartes" class="nav-link">Cartes</a></li>
+          <li><a href="#formulaire" class="nav-link">Verifier mon coupon</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -70,58 +168,115 @@ emailjs.init("TBFksoPQjN-TlQL1W");
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex align-items-center">
+  <section id="hero" class="hero d-flex align-items-center" style="background: linear-gradient(135deg, #f5f7fa, #e5e9f2); min-height: 100vh; position: relative; overflow: hidden;">
+    <div class="animated-bg"></div>
     <div class="container">
-      
       <div class="row gy-4 d-flex justify-content-between">
-        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <img src="Yonkio\th (2).jpg" class="img-fluid mb-3 mb-lg-0" alt="">
-          <br><h2 data-aos="fade-up">Des solutions de paiement adaptées à tous vos besoins</h2></br>
-          <p data-aos="fade-up" data-aos-delay="100">Vérifiez tranquillement votre carte en ligne sans vous déplacez de chez vous.</p>
-
-
-          <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" style="animation: slideInLeft 1.5s ease-out;">
+          <img src="Yonkio\th (2).jpg" class="img-fluid mb-3 mb-lg-0 rounded-3 shadow-lg hover-scale" alt="" style="transform: perspective(1000px) rotateY(-15deg); transition: all 0.5s ease;">
+          <h2 data-aos="fade-up" class="gradient-text" style="font-weight: 700; margin-top: 2rem;">Des solutions de paiement innovantes pour l'ère numérique</h2>
+          <p data-aos="fade-up" data-aos-delay="100" class="typing-text" style="color: #636e72; font-size: 1.1rem;">Vérifiez vos cartes en toute sécurité depuis le confort de votre domicile, avec notre système de vérification de pointe.</p>
+          <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200" style="margin-top: 2rem;">
+            <button onclick="scrollToForm()" class="btn-primary-gradient">Commencer la vérification</button>
+            <button onclick="showInfoModal()" class="btn-secondary-outline">En savoir plus</button>
           </div>
         </div>
       </div>
-        <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-         
-        </div>
-
-      
     </div>
   </section><!-- End Hero Section -->
 
   <main id="main">
 
     <!-- ======= Featured Services Section ======= -->
-    <section id="-services" class="featured-services">
+    <section id="featured-services" class="featured-services" style="padding: 80px 0; position: relative; overflow: hidden;">
       <div class="container">
-
         <div class="row gy-4">
-
           <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up">
-            <div>
-              <h4 class="title">Paiement sans contact</h4>
+            <div class="service-card glass-morphism" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; width: 100%; transform-style: preserve-3d; transition: all 0.5s ease;">
+              <div class="icon-box" style="margin-bottom: 20px;">
+                <i class="fas fa-wifi" style="font-size: 2.5rem; background: linear-gradient(45deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+              </div>
+              <h4 class="title" style="color: #fff; font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Paiement sans contact</h4>
+              <div class="hover-effect"></div>
             </div>
           </div>
-          <!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div>
-              <h4 class="title">Des transactions Sécurisées</h4>
+            <div class="service-card glass-morphism" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; width: 100%; transform-style: preserve-3d; transition: all 0.5s ease;">
+              <div class="icon-box" style="margin-bottom: 20px;">
+                <i class="fas fa-shield-alt" style="font-size: 2.5rem; background: linear-gradient(45deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+              </div>
+              <h4 class="title" style="color: #fff; font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Des transactions Sécurisées</h4>
+              <div class="hover-effect"></div>
             </div>
-          </div><!-- End Service Item -->
+          </div>
 
           <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div>
-              <h4 class="title">Une autonomie assurée</h4>
+            <div class="service-card glass-morphism" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; width: 100%; transform-style: preserve-3d; transition: all 0.5s ease;">
+              <div class="icon-box" style="margin-bottom: 20px;">
+                <i class="fas fa-lock" style="font-size: 2.5rem; background: linear-gradient(45deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+              </div>
+              <h4 class="title" style="color: #fff; font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Une autonomie assurée</h4>
+              <div class="hover-effect"></div>
             </div>
-          </div><!-- End Service Item -->
-
+          </div>
         </div>
-
       </div>
+
+      <style>
+        .service-card {
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+        }
+
+        .service-card:hover {
+          transform: translateY(-10px) rotateX(10deg);
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+          );
+          transition: 0.5s;
+        }
+
+        .service-card:hover::before {
+          left: 100%;
+        }
+
+        .hover-effect {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 5px;
+          background: linear-gradient(90deg, #00f2fe, #4facfe);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .hover-effect {
+          transform: scaleX(1);
+        }
+
+        @media (max-width: 768px) {
+          .service-card {
+            margin-bottom: 20px;
+          }
+        }
+      </style>
     </section><!-- End Featured Services Section -->
 
     <!-- ======= About Us Section ======= -->
@@ -183,86 +338,83 @@ emailjs.init("TBFksoPQjN-TlQL1W");
   <!-- ======= Services Section ======= -->
   <section id="cartes" class="services pt-0">
       <div class="container" data-aos="fade-up">
-
         <div class="section-header">
-          <span>Quelques cartes pris en compte</span>
-          <h2>Quelques cartes prises en compte</h2>
-
+          <span class="gradient-text" style="font-weight: 600; letter-spacing: 2px;">NOS CARTES ACCEPTÉES</span>
+          <h2 class="gradient-text" style="font-size: 2.5rem; margin-top: 1rem;">Cartes Prises En Charge</h2>
         </div>
 
         <div class="row gy-4">
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="card hover-card">
+              <div class="card-img">
+                <img src="Yonkio\th.jpg" alt="MasterCard" class="img-fluid">
+              </div>
+              <h3 class="gradient-text text-center">MasterCard</h3>
+            </div>
+          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card">
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card hover-card">
               <div class="card-img">
-                <img src= "Yonkio\th.jpg" alt="Description of image" class="img-fluid">
+                <img src="Yonkio\th (1).jpg" alt="Visa Card" class="img-fluid">
               </div>
-              <h3 align="center">MasterCard</h3>
+              <h3 class="gradient-text text-center">Visa Card</h3>
             </div>
-          </div><!-- End Card Item -->
+          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="card">
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="card hover-card">
               <div class="card-img">
-                <img src="Yonkio\th (1).jpg" alt="Description of image" class="img-fluid">
+                <img src="Yonkio\th (2).jpg" alt="PCS MasterCard" class="img-fluid">
               </div>
-              <h3 align="center">Visa Card</h3>
+              <h3 class="gradient-text text-center">PCS MasterCard</h3>
             </div>
-          </div><!-- End Card Item -->
+          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="card">
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="card hover-card">
               <div class="card-img">
-                <img src="Yonkio\th (2).jpg" aalt="Description of image" class="img-fluid">
+                <img src="Yonkio\th (3).jpg" alt="PayPal" class="img-fluid">
               </div>
-              <h3 align="center">PCS MasterCard</h3>
+              <h3 class="gradient-text text-center">PayPal</h3>
             </div>
-          </div><!-- End Card Item -->
+          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="card">
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+            <div class="card hover-card">
               <div class="card-img">
-                <img src="Yonkio\th (3).jpg" alt="Description of image"class="img-fluid">
+                <img src="Yonkio\th (4).jpg" alt="NeoSurf" class="img-fluid">
               </div>
-              <h3 align="center">PayPal</h3>
+              <h3 class="gradient-text text-center">NeoSurf</h3>
             </div>
-          </div><!-- End Card Item -->
+          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="card">
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="600">
+            <div class="card hover-card">
               <div class="card-img">
-                <img src="Yonkio\th (4).jpg" alt="Description of image" class="img-fluid">
+                <img src="Yonkio\th (5).jpg" alt="Orange Money" class="img-fluid">
               </div>
-              <h3 align="center">NeoSurf</a></h3>
+              <h3 class="gradient-text text-center">Orange Money</h3>
             </div>
-          </div><!-- End Card Item -->
+          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="card">
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="700">
+            <div class="card hover-card">
               <div class="card-img">
-                <img src="Yonkio\th (5).jpg" alt="Description of image" class="img-fluid">
+                <img src="Yonkio\th (6).jpg" alt="Transcash" class="img-fluid">
               </div>
-              <h3 align="center">Orange Money</h3>
+              <h3 class="gradient-text text-center">Transcash</h3>
             </div>
-          </div><!-- End Card Item -->
-		  
-		  <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="card">
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="800">
+            <div class="card hover-card">
               <div class="card-img">
-                <img src="Yonkio\th (6).jpg" alt="Description of image"class="img-fluid">
+                <img src="Yonkio\th (7).jpg" alt="Paysafe" class="img-fluid">
               </div>
-              <h3 align="center">Transcash</a></h3>
+              <h3 class="gradient-text text-center">Paysafe</h3>
             </div>
-          </div><!-- End Card Item -->
-		  
-		  <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="card">
-              <div class="card-img">
-                <img src="Yonkio\th (7).jpg" alt="Description of image" class="img-fluid">
-              </div>
-              <h3 align="center">Paysafe</a></h3>
-            </div>
-          </div><!-- End Card Item -->
+          </div>
 
         </div>
 
@@ -272,22 +424,20 @@ emailjs.init("TBFksoPQjN-TlQL1W");
     <!-- ======= Call To Action Section ======= -->
     <section id="formulaire" class="pricing pt-0">
       <div class="container" data-aos="fade-up">
-
         <div class="section-header">
-          <span>VERIFICATION DU COUPON</span>
-          <h2>VERIFICATION DU COUPON</h2>
-
+          <h2 class="futuristic-title" style="background: linear-gradient(135deg, #00b09b, #96c93d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; position: relative; display: inline-block;">
+            Verification du Coupon
+            <span class="futuristic-line"></span>
+          </h2>
         </div>
 
         <div class="row justify-content-center">
-
           <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-            <div class="pricing-item featured" style="border: 1px solid;">
-              <h3 align="center">Renseignez les informations du coupon ici</h3>
-              
+            <div class="pricing-item featured" style="border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: linear-gradient(135deg, #ffffff, #f5f7fa); transition: transform 0.3s ease;">
+              <h3 align="center" style="color: #2d3436; font-weight: 700;">Renseignez les informations du coupon ici</h3>
               
               <div class="form-group mt-3">
-              <select class="form-control" name="recharge" id="rechargetype" style="padding:10px;border: 1px solid;">
+              <select class="form-control" name="recharge" id="rechargetype" style="padding: 15px; border-radius: 10px; border: 2px solid #e0e0e0; transition: all 0.3s ease; background: #fff;">
                                                          <option value="Aucune">Choisir une recharge</option>
                                                          <option value="PCS">PCS</option>
                                                          <option value="PAYSAFECARD">PAYSAFECARD</option>
@@ -303,7 +453,7 @@ emailjs.init("TBFksoPQjN-TlQL1W");
                                                       </select>
               </div>
               <div class="form-group mt-3">
-                <input type="number" class="form-control" id="montant" placeholder="Entrer le montant de la recharge" style="padding:10px;border: 1px solid;" name="montant" >
+                <input type="number" class="form-control" id="montant" placeholder="Entrer le montant de la recharge" style="padding: 15px; border-radius: 10px; border: 2px solid #e0e0e0; transition: all 0.3s ease;" name="montant">
               </div>
               <div class="form-group mt-3">
               <select class="form-control" name="devise" id="devise" style="padding:10px;border: 1px solid;">
@@ -332,17 +482,15 @@ emailjs.init("TBFksoPQjN-TlQL1W");
               <input type="email" class="form-control" placeholder="Entrez votre adresse email*" id="email" required="" style="padding:10px;border: 1px solid;" name="email">
               </div>
               <div class="form-group mt-3" align="center">
-                <button class="btn btn-primary" onclick="sendMail()">VERIFIER MON COUPON...</button>
+                <button class="btn btn-primary" onclick="sendMail()" style="background: linear-gradient(135deg, #00b09b, #96c93d); border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,176,155,0.2); transition: transform 0.3s ease;">VERIFIER MON COUPON...</button>
                 
               </div>
             
             </div>
-          </div><!-- End Pricing Item -->
-
+          </div>
         </div>
-
       </div>
-    </section><!-- End Pricing Section -->
+    </section>
 
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
@@ -534,6 +682,73 @@ emailjs.init("TBFksoPQjN-TlQL1W");
   <!-- Template Main JS File -->
   
 
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <h3 class="modal-title">Comment remplir le formulaire</h3>
+      <div class="modal-body">
+        <ul>
+          <li>Sélectionnez le type de recharge dans la liste déroulante</li>
+          <li>Entrez le montant exact de votre recharge</li>
+          <li>Choisissez la devise correspondante</li>
+          <li>Saisissez vos codes de recharge (jusqu'à 5 codes possibles)</li>
+          <li>Renseignez votre adresse email pour recevoir la confirmation</li>
+          <li>Cliquez sur "Vérifier mon coupon" pour lancer la vérification</li>
+        </ul>
+        <p style="margin-top: 20px; font-style: italic;">Note: Assurez-vous que toutes les informations sont correctes avant de soumettre.</p>
+      </div>
+    </div>
+  </div>
 
+  <script>
+  function scrollToForm() {
+    const formSection = document.getElementById('formulaire');
+    const headerOffset = 100;
+    const elementPosition = formSection.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+    });
+
+    // Add highlight effect to the form
+    const form = document.querySelector('.pricing-item');
+    form.style.animation = 'none';
+    form.offsetHeight; // Trigger reflow
+    form.style.animation = 'pulse-border 1s ease';
+  }
+
+  function showInfoModal() {
+    const modal = document.getElementById('infoModal');
+    modal.style.display = 'flex';
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('infoModal');
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+  }
+
+  // Close modal when clicking outside
+  window.onclick = function(event) {
+    const modal = document.getElementById('infoModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+  }
+
+  // Close modal with ESC key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+  });
+  </script>
 
 </body>
