@@ -39,6 +39,9 @@
     }
 </style>
 
+
+
+
 <!-- iOS icons -->
 <link rel="apple-touch-icon" href="./Yonkio/hero-img.png">
 <link rel="apple-touch-icon" sizes="152x152" href="./Yonkio/hero-img.png">
@@ -707,9 +710,11 @@
     onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js';" 
     defer>
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" 
-    onerror="this.onerror=null;this.src='./js/email.min.js';" 
-    defer>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("7dyXs7ectuACvtO12"); // Replace with actual Public Key
+  })();
 </script>
 <script src="index.js" defer></script>
 
@@ -731,6 +736,37 @@
         </div>
     </div>
 </div>
+
+<!-- Success Modal -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeSuccessModal()">&times;</span>
+        <h3 class="modal-title">Message Sent Successfully!</h3>
+        <div class="modal-body">
+            <p>Your verification request has been received. You'll get a confirmation email shortly.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Success Modal Styles */
+    #successModal .modal-content {
+        background: linear-gradient(135deg, #00b09b, #96c93d);
+        color: white;
+        border-radius: 20px;
+        padding: 30px;
+    }
+
+    #successModal .modal-title {
+        color: white;
+        margin-bottom: 20px;
+    }
+
+    #successModal .modal-body p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+</style>
 
 <script>
     // Initialize UI when DOM is ready
@@ -791,6 +827,31 @@
             if (event.key === 'Escape') closeModal();
         });
     });
+
+    // Success Modal Functions
+    window.showSuccessModal = function() {
+        const modal = document.getElementById('successModal');
+        if (modal) {
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+    };
+
+    window.closeSuccessModal = function() {
+        const modal = document.getElementById('successModal');
+        if (modal) {
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+    };
+
+    // Modify the sendMail function to show success modal
+    window.sendMail = function() {
+        // Existing email sending logic...
+        
+        // After successful email send
+        showSuccessModal();
+    };
 
     // Hide loader when all resources are loaded
     window.addEventListener('load', function() {

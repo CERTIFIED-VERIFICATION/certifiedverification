@@ -1,16 +1,24 @@
-// Check if EmailJS is loaded
 function isEmailJSLoaded() {
   return typeof emailjs !== 'undefined';
 }
 
 function initEmailJS() {
-  if (typeof emailjs !== 'undefined') {
-    emailjs.init("YOUR_USER_ID"); // Make sure to replace with your actual EmailJS user ID
+  if (!isEmailJSLoaded()) {
+    console.error('EmailJS library not loaded. Please check if the EmailJS script is properly included.');
+    return;
+  }
+
+  try {
+    emailjs.init("7dyXs7ectuACvtO12");
+    console.log('EmailJS initialized successfully');
+  } catch (error) {
+    console.error('Failed to initialize EmailJS:', error.message);
   }
 }
 
-// Initialize EmailJS when the page loads
+// Initialize EmailJS when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initEmailJS);
+
 
 function sendMail() {
   const loadingDiv = document.querySelector('.loading');
