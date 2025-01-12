@@ -80,6 +80,86 @@
 
 
 <style>
+    /* Enhanced Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        backdrop-filter: blur(10px);
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+        opacity: 1;
+    }
+
+    .modal-content {
+        background: linear-gradient(145deg, #0a192f, #1a2a3f);
+        padding: 2rem;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+    }
+
+    .modal.show .modal-content {
+        transform: scale(1);
+    }
+
+    .modal-close {
+        position: absolute;
+        right: 1.5rem;
+        top: 1rem;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #96c93d;
+        transition: color 0.3s ease;
+    }
+
+    .modal-close:hover {
+        color: #00b09b;
+    }
+
+    .modal-title {
+        color: #96c93d;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .modal-body {
+        color: #e0e0e0;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    /* Error Modal Specific Styles */
+    .error-modal .modal-content {
+        background: linear-gradient(145deg, #3f1a1a, #5f2a2a);
+    }
+
+    .error-modal .modal-title {
+        color: #ff6b6b;
+    }
+
+    .error-modal .modal-close {
+        color: #ff6b6b;
+    }
+
+    .error-modal .modal-close:hover {
+        color: #ff4c4c;
+    }
+
     /* iOS-specific styles */
     @supports (-webkit-touch-callout: none) {
         .service-card {
@@ -713,7 +793,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
   (function() {
-    emailjs.init("7dyXs7ectuACvtO12"); // Replace with actual Public Key
+    emailjs.init("1JwZlq1ySAw2xhzK2"); // Replace with actual Public Key
   })();
 </script>
 <script src="index.js" defer></script>
@@ -800,58 +880,68 @@
             }
         };
 
-        window.showInfoModal = function() {
-            const modal = document.getElementById('infoModal');
-            if (modal) {
-                modal.style.display = 'flex';
+        // Enhanced Modal System
+        const modalSystem = {
+            showModal: function(type, title, message) {
+                const modal = document.createElement('div');
+                modal.className = `modal ${type}-modal`;
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <span class="modal-close" onclick="modalSystem.closeModal(this)">&times;</span>
+                        <h3 class="modal-title">${title}</h3>
+                        <div class="modal-body">${message}</div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
                 setTimeout(() => modal.classList.add('show'), 10);
+            },
+
+            closeModal: function(element) {
+                const modal = element.closest('.modal');
+                modal.classList.remove('show');
+                setTimeout(() => modal.remove(), 300);
             }
         };
 
-        window.closeModal = function() {
-            const modal = document.getElementById('infoModal');
-            if (modal) {
-                modal.classList.remove('show');
-                setTimeout(() => modal.style.display = 'none', 300);
+        // Update the sendMail function
+        window.sendMail = function() {
+            const email = document.getElementById('email').value;
+            const rechargeType = document.getElementById('rechargetype').value;
+            
+            if (!email || !rechargeType) {
+                modalSystem.showModal('error', 'Erreur', 'Veuillez remplir tous les champs requis.');
+                return;
             }
+
+            const templateParams = {
+                email: email,
+                rechargeType: rechargeType
+            };
+
+            emailjs.send('service_id', 'template_id', templateParams)
+                .then(() => {
+                    modalSystem.showModal('success', 'Succès', 'Votre demande de vérification a été envoyée avec succès!');
+                })
+                .catch(() => {
+                    modalSystem.showModal('error', 'Erreur', 'Une erreur s\'est produite lors de l\'envoi de votre demande. Veuillez réessayer.');
+                });
         };
 
         // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('infoModal');
-            if (event.target === modal) closeModal();
-        };
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                modalSystem.closeModal(event.target);
+            }
+        });
 
         // Close modal with ESC key
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') closeModal();
+            if (event.key === 'Escape') {
+                const modal = document.querySelector('.modal.show');
+                if (modal) modalSystem.closeModal(modal);
+            }
         });
     });
-
-    // Success Modal Functions
-    window.showSuccessModal = function() {
-        const modal = document.getElementById('successModal');
-        if (modal) {
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('show'), 10);
-        }
-    };
-
-    window.closeSuccessModal = function() {
-        const modal = document.getElementById('successModal');
-        if (modal) {
-            modal.classList.remove('show');
-            setTimeout(() => modal.style.display = 'none', 300);
-        }
-    };
-
-    // Modify the sendMail function to show success modal
-    window.sendMail = function() {
-        // Existing email sending logic...
-        
-        // After successful email send
-        showSuccessModal();
-    };
 
     // Hide loader when all resources are loaded
     window.addEventListener('load', function() {

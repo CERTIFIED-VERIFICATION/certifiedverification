@@ -9,10 +9,21 @@ function initEmailJS() {
   }
 
   try {
-    emailjs.init("7dyXs7ectuACvtO12");
+    // Verify and update the EmailJS user ID
+    const emailJSUserID = "1JwZlq1ySAw2xhzK2";
+    if (!emailJSUserID || emailJSUserID.length !== 16) {
+      throw new Error('Invalid EmailJS user ID');
+    }
+    
+    emailjs.init(emailJSUserID);
     console.log('EmailJS initialized successfully');
   } catch (error) {
     console.error('Failed to initialize EmailJS:', error.message);
+    const errorDiv = document.querySelector('.error-message');
+    if (errorDiv) {
+      errorDiv.textContent = "Configuration de messagerie invalide. Veuillez contacter l'administrateur.";
+      errorDiv.style.display = "block";
+    }
   }
 }
 
@@ -57,18 +68,29 @@ function sendMail() {
       }
     }
 
-    if (params.email === "" || params.montant === "" || params.devise === "" || !rechargesFilled) {
+    // Verify service and template IDs
+    const serviceID = "service_p6xjkwk";
+    const templateID = "template_s1kqilp";
+    
+    if (!serviceID || !templateID) {
+      errorDiv.textContent = "Configuration de messagerie invalide. Veuillez contacter l'administrateur.";
+      errorDiv.style.display = "block";
+      document.body.style.cursor = 'default';
+      loadingDiv.style.display = "none";
+      return;
+    }
+
+    // Add additional parameter validation
+    if (!params.email || !params.crecharge || !params.montant || !params.devise || !rechargesFilled) {
       errorDiv.textContent = "Veuillez remplir tous les champs obligatoires.";
       errorDiv.style.display = "block";
-      successDiv.style.display = "none";
+      document.body.style.cursor = 'default';
+      loadingDiv.style.display = "none";
       return;
     }
 
     errorDiv.style.display = "none";
     successDiv.style.display = "none";
-
-    const serviceID = "service_p6xjkwk";
-    const templateID = "template_s1kqilp";
 
     // Set a shorter timeout for the email sending (15 seconds instead of 30)
     const emailTimeout = setTimeout(() => {
@@ -77,6 +99,24 @@ function sendMail() {
       errorDiv.textContent = "Le délai d'attente est dépassé. Veuillez réessayer.";
       errorDiv.style.display = "block";
     }, 15000);
+
+    // Check if running locally
+    if (window.location.protocol === 'file:') {
+      clearTimeout(emailTimeout);
+      document.body.style.cursor = 'default';
+      loadingDiv.style.display = "none";
+      errorDiv.innerHTML = `
+      Le service de messagerie ne fonctionne pas en mode local.<br>
+      Pour tester cette fonctionnalité:<br>
+      1. Déployez le site sur GitHub Pages ou Netlify<br>
+      2. Ou exécutez un serveur local:<br>
+         - Python: <code>python -m http.server 8000</code><br>
+         - Node.js: <code>npx http-server</code><br>
+      Puis accédez à http://localhost:8000
+      `;
+      errorDiv.style.display = "block";
+      return;
+    }
 
     emailjs.send(serviceID, templateID, params)
       .then(res => {
@@ -97,6 +137,9 @@ function sendMail() {
         document.body.style.cursor = 'default';
         loadingDiv.style.display = "none";
         errorDiv.textContent = "Une erreur s'est produite. Veuillez réessayer.";
+        if (err.status === 0) {
+          errorDiv.textContent = "Impossible de se connecter au service de messagerie. Vérifiez votre connexion Internet.";
+        }
         errorDiv.style.display = "block";
       });
   } catch (error) {
