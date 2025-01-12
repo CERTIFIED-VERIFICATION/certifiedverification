@@ -790,13 +790,16 @@
     onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js';" 
     defer>
 </script>
+<!-- Move EmailJS script before index.js -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
-  (function() {
-    emailjs.init("1JwZlq1ySAw2xhzK2"); // Replace with actual Public Key
-  })();
+    (function() {
+        emailjs.init("1JwZlq1ySAw2xhzK2");
+        console.log('EmailJS initialized successfully');
+    })();
 </script>
 <script src="index.js" defer></script>
+
 
 <!-- Modal -->
 <div id="infoModal" class="modal">
