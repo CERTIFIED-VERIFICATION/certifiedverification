@@ -234,16 +234,78 @@ window.addEventListener('load', function() {
 
 // Add this at the end of your index.js file
 document.addEventListener('DOMContentLoaded', function() {
-  // Handle the "En savoir plus" button click
-  const formGuidanceButton = document.querySelector('[data-bs-toggle="modal"][data-bs-target="#formGuidanceModal"]');
-  if (formGuidanceButton) {
-    formGuidanceButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      const formGuidanceModal = new bootstrap.Modal(document.getElementById('formGuidanceModal'));
-      formGuidanceModal.show();
+  // Initialize video players
+  initVideoPlayers();
+  
+  // Initialize background videos
+  initBackgroundVideos();
+  
+  // Initialize scroll to top
+  initScrollToTop();
+});
+
+// Video functionality
+function initVideoPlayers() {
+  const heroVideo = document.querySelector('.hero-video-container video');
+  
+  if (heroVideo) {
+    // Ensure hero video auto-plays and loops
+    heroVideo.play().catch(e => {
+      console.log('Hero video autoplay prevented:', e);
+      // Try to play on user interaction
+      document.addEventListener('click', () => {
+        heroVideo.play().catch(e => console.log('Still cannot autoplay hero video:', e));
+      }, { once: true });
+    });
+    
+    // Prevent user from stopping the video
+    heroVideo.addEventListener('pause', () => {
+      heroVideo.play();
+    });
+    
+    // Ensure video loops
+    heroVideo.addEventListener('ended', () => {
+      heroVideo.currentTime = 0;
+      heroVideo.play();
     });
   }
-});
+}
+
+// Auto-play global background video
+function initBackgroundVideos() {
+  const globalBackgroundVideo = document.querySelector('.global-background-video video');
+  
+  if (globalBackgroundVideo) {
+    // Try to autoplay the background video
+    globalBackgroundVideo.play().catch(e => {
+      console.log('Background video autoplay prevented:', e);
+      // Fallback: play on user interaction
+      document.addEventListener('click', () => {
+        globalBackgroundVideo.play().catch(e => console.log('Still cannot autoplay:', e));
+      }, { once: true });
+    });
+  }
+}
+
+// Scroll to top functionality
+function initScrollToTop() {
+  const scrollTop = document.querySelector('.scroll-top');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollTop.classList.add('show');
+    } else {
+      scrollTop.classList.remove('show');
+    }
+  });
+  
+  scrollTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
 
 // Export functions for global use
 window.sendMail = sendMail;
