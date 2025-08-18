@@ -234,6 +234,9 @@ window.addEventListener('load', function() {
 
 // Add this at the end of your index.js file
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize mobile navigation
+  initMobileNavigation();
+  
   // Initialize video players
   initVideoPlayers();
   
@@ -243,6 +246,114 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize scroll to top
   initScrollToTop();
 });
+
+// Mobile Navigation functionality
+function initMobileNavigation() {
+  const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+  const navbar = document.querySelector('.navbar');
+  const mobileNavShow = document.querySelector('.mobile-nav-show');
+  const mobileNavHide = document.querySelector('.mobile-nav-hide');
+  
+  if (mobileNavToggle && navbar) {
+    mobileNavToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      if (navbar.classList.contains('mobile-nav-active')) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
+    });
+    
+    // Close mobile nav when clicking on a link
+    const navLinks = navbar.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        closeMobileNav();
+      });
+    });
+    
+    // Close mobile nav when clicking on navbar background
+    navbar.addEventListener('click', function(e) {
+      if (e.target === navbar) {
+        closeMobileNav();
+      }
+    });
+    
+    function openMobileNav() {
+      navbar.classList.add('mobile-nav-active');
+      mobileNavShow.classList.add('d-none');
+      mobileNavHide.classList.remove('d-none');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+    
+    function closeMobileNav() {
+      navbar.classList.remove('mobile-nav-active');
+      mobileNavShow.classList.remove('d-none');
+      mobileNavHide.classList.add('d-none');
+      document.body.style.overflow = ''; // Restore scrolling
+    }
+    
+    // Make closeMobileNav globally available
+    window.closeMobileNav = closeMobileNav;
+  }
+}
+
+// Simple toggle function for testing
+function toggleMobileNav() {
+  try {
+    console.log('Toggle button clicked!');
+    
+    const navbar = document.querySelector('.navbar');
+    console.log('Navbar found:', navbar);
+    
+    if (!navbar) {
+      console.error('Navbar not found!');
+      return;
+    }
+    
+    const mobileNavShow = document.querySelector('.mobile-nav-show');
+    const mobileNavHide = document.querySelector('.mobile-nav-hide');
+    
+    console.log('Current navbar classes:', navbar.classList.toString());
+    
+    if (navbar.classList.contains('mobile-nav-active')) {
+      console.log('Closing mobile nav');
+      navbar.classList.remove('mobile-nav-active');
+      if (mobileNavShow) mobileNavShow.classList.remove('d-none');
+      if (mobileNavHide) mobileNavHide.classList.add('d-none');
+      document.body.style.overflow = '';
+    } else {
+      console.log('Opening mobile nav');
+      navbar.classList.add('mobile-nav-active');
+      if (mobileNavShow) mobileNavShow.classList.add('d-none');
+      if (mobileNavHide) mobileNavHide.classList.remove('d-none');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    console.log('After toggle - navbar classes:', navbar.classList.toString());
+    
+  } catch (error) {
+    console.error('Error in toggleMobileNav:', error);
+  }
+}
+
+// Make toggleMobileNav globally available
+window.toggleMobileNav = toggleMobileNav;
+
+// Simple test function
+function testButton() {
+  console.log('Test button clicked!');
+  const button = document.querySelector('.mobile-nav-toggle');
+  if (button) {
+    button.style.background = 'red';
+    console.log('Button color changed to red');
+  } else {
+    console.error('Button not found!');
+  }
+}
+
+window.testButton = testButton;
 
 // Video functionality
 function initVideoPlayers() {
